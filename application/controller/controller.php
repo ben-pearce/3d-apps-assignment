@@ -1,11 +1,32 @@
 <?php
 
+/**
+ * Controller class for back-end business logic. 
+ */
 class Controller {
 
+  /**
+   * Instance of view loader to allow controller  to
+   * render a view to respond with.
+   */
   public $load;
+
+  /**
+   * Instance of data model which provides access to the 
+   * underlying datastore.
+   */
   public $model;
 
-  function __construct($pageURI = null) {
+  /**
+   * Controller constructor.
+   * 
+   * Creates an instance of both the view loader and the
+   * data model.
+   * 
+   * It then executes the appropriate method depending
+   * on which endpoint has been requested.
+   */
+  public function __construct($pageURI = null) {
     $this->load = new Load();
     $this->model = new Model();
 
