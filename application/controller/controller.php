@@ -31,5 +31,52 @@ class Controller {
     $this->load->view('pageView', $data);
   }
 
+  /**
+   * GET
+   * Endpoint: /apiGetHome
+   * 
+   * Renders the homeView which contains the home page
+   * content.
+   * 
+   * Intended to be loaded into the pageView template
+   * using AJAX.
+   * 
+   * Additional content will also be loaded using AJAX.
+   */
+  public function apiGetHome() {
+    $data = $this->model->getBrands();
+    $this->load->view('homeView', ["brands" => $data]);
+  }
+
+  /**
+   * GET
+   * Endpoint: /apiGetAbout
+   * 
+   * Renders the aboutView which contains the about 
+   * page content.
+   * 
+   * Intended to be loaded into the pageView template
+   * using AJAX.
+   */
+  public function apiGetAbout() {
+    $this->load->view('aboutView', []);
+  }
+
+  /**
+   * GET
+   * Endpoint: /apiGetModel
+   * 
+   * Renders the modelView which tonains the model
+   * (drinks) page content.
+   * 
+   * Intended to be loaded into the pageView template
+   * using AJAX.
+   * 
+   * Additional content, such as 3D model, description
+   * etc, will be loaded using AJAX.
+   */
+  public function apiGetModel() {
+    $this->load->view('modelView', []);
+  }
   }
 }
