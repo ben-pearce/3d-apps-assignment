@@ -22,6 +22,30 @@ class Model {
     }
   }
 
+  /**
+   * Iterates each install script and executes 
+   * inside the datastore.
+   */
+  public function install() {
+    try {
+      $scripts = [
+        'install.sql',
+        'main_brand.sql', 
+        'main_image.sql', 
+        'main_model.sql', 
+        'main_strings.sql'];
+      foreach($scripts as $script) {
+        $path = "./application/storage/$script";
+        $f = fopen($path, 'r');
+        $stmt = fread($f, filesize($path));
+        $this->db->exec($stmt);
+        fclose($f);
+      }
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
 }
 
 ?>
