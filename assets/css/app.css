@@ -78,6 +78,58 @@ body {
 .card-header:first-child {
   border-radius: 10px 10px 0 0;
 }
+
+/******************
+ * Navbar
+ ******************/
+
+.navbar-coke {
+  background-color: var(--primary-color);
+  border-width: 0px;
+  min-height: 70px;
+
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+}
+
+.navbar-coke .navbar-brand {
+  color: rgb(245, 235, 235);
+  transition: color .5s;
+}
+
+.navbar-coke .navbar-brand:hover {
+  color: var(--secondary-color);
+}
+
+.navbar-coke .navbar-nav .nav-item {
+  margin: 0 5px;
+}
+
+.navbar-coke .navbar-nav > li > .nav-link {
+  color: white;
+  border-radius: 10px;
+}
+
+.navbar-coke .navbar-nav .nav-item > .nav-link:hover, 
+.navbar-coke .navbar-nav .nav-item > .nav-link:focus {
+  color: rgb(180, 180, 180);
+}
+
+.navbar-coke .navbar-nav .nav-item > .nav-link {
+  padding: 10px;
+}
+
+.navbar-coke .navbar-nav .nav-item > .nav-link.active,
+.navbar-coke .navbar-nav .nav-item > .nav-link.active:hover,
+.navbar-coke .navbar-nav .nav-item > .nav-link.active:focus {
+  background: #FFF;
+  color:  #000;
+}
+
+.navbar-coke .navbar-toggler {
+  border-color: white;
+}
 }
 
 @font-face {
