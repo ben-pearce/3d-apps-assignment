@@ -260,4 +260,86 @@ class Controller {
     $this->load->view('messageView', 'Deleted string ' . $_GET['key']);
   }
   
+  /**
+   * GET
+   * Endpoint: /dbGetModel
+   * 
+   * Params:
+   *  - brand: The brand of model to get.
+   * 
+   * Used for getting data about a 3D model from the underlying
+   * datastore.
+   * 
+   * Responds with a JSON packet which will be called
+   * by AJAX.
+   */
+  public function dbGetModel() {
+    header('Content-Type: application/json');
+    $data = $this->model->getModel($_GET['brand']);
+    $this->load->raw(json_encode($data));
+  }
+
+  /**
+   * GET
+   * Endpoint: /dbGetModels
+   * 
+   * Used for getting data about all 3D models from the
+   * underlying datastore.
+   * 
+   * Responds with a JSON packet which will be called
+   * by AJAX.
+   */
+  public function dbGetModels() {
+    header('Content-Type: application/json');
+    $data = $this->model->getModels();
+    $this->load->raw(json_encode($data));
+  }
+
+  /**
+   * POST
+   * Endpoint: /dbCreateModel
+   * 
+   * Params:
+   *  - brand: The brand of the new model.
+   *  - title: The title of the new model page.
+   *  - subtitle: The subtitle of the new model page.
+   *  - description: The description of the new model.
+   *  - creationMethod: The creation method of the new model.
+   *  - modelPath: The path to the 3D model asset.
+   *  - modelTitle: The title of the new model.
+   *  - pageUrl: The URL for the new model.
+   * 
+   * Used to create a new 3D model in the underlying
+   * datastore.
+   */
+  public function dbCreateModel() {
+    $this->model->createModel(
+      $_POST['brand'],
+      $_POST['title'],
+      $_POST['subtitle'],
+      $_POST['description'],
+      $_POST['creationMethod'],
+      $_POST['modelPath'],
+      $_POST['modelTitle'],
+      $_POST['pageUrl']
+    );
+    $this->load->view('messageView', 'Created new model ' . $_POST['title']);
+  }
+
+  /**
+   * GET
+   * Endpoint: /dbDeleteModel
+   * 
+   * Params:
+   *  - id: The ID of the model to delete.
+   * 
+   * Used to delete a model from the underlying datastore.
+   * 
+   * Reponds with a message to confirm success.
+   */
+  public function dbDeleteModel() {
+    $this->model->deleteModel($_GET['id']);
+    $this->load->view('messageView', 'Deleted model ' . $_GET['id']);
+  }
+
 }
