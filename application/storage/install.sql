@@ -15,15 +15,15 @@ create unique index brand_id_uindex
 
 create table image
 (
-    id             integer      not null
+    id           integer      not null
         constraint image_pk
             primary key autoincrement,
-    brand          varchar(50)  not null
+    brand        varchar(50)  not null
         references brand
             on update cascade on delete cascade,
-    name           varchar(50)  not null,
-    description    text         not null,
-    image_src_path varchar(255) not null
+    name         varchar(50)  not null,
+    description  text         not null,
+    img_src_path varchar(255) not null
 );
 
 create unique index image_id_uindex
@@ -42,7 +42,8 @@ create table model
     description     text         not null,
     creation_method varchar(255) not null,
     model_x3d_path  varchar(255) not null,
-    model_x3d_title varchar(50)  not null
+    model_x3d_title varchar(50)  not null,
+    info_page_url   text
 );
 
 create unique index model_id_uindex
