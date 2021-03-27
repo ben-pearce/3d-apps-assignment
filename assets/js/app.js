@@ -53,12 +53,89 @@ class PageSetupHandlers {
     });
   }
 
+  /**
+   * Page handler for brand model pages.
+   * 
+   * Gets some text content from the back-end and loads it into
+   * the model view.
+   * 
+   * Also responsible for setting the path for the X3D model
+   * and getting related images for the gallery.
+   * 
+   * Also will bind the appropriate functions to the buttons
+   * for interacting with the 3D model.
+   * 
+   * @param {object} page The new page content jQuery object.
+   * @param {object} attrs Attributes for the new page.
+   * @param {function} cb The callback to invoke upon completion.
+   */
+  static model(page, attrs, cb) {
+    $.when(
+      $.getJSON('index.php/dbGetStrings?for=model', (data) => {
+        page.find('#gallery-title').text(data['model.gallery.title']);
+        page.find('#gallery-description')
+          .text(data['model.gallery.description']);
+        page.find('#camera-title').text(data['model.camera.title']);
+        page.find('#camera-subtitle').text(data['model.camera.subtitle']);
+        page.find('#animation-title').text(data['model.animation.title']);
+        page.find('#animation-subtitle').text(data['model.animation.subtitle']);
+        page.find('#render-title').text(data['model.render.title']);
+        page.find('#render-subtitle').text(data['model.render.subtitle']);
+      }),
+      $.getJSON(`index.php/dbGetModel?brand=${attrs['brand']}`, (data) => {
+        page.find('#model-description-title').text(data['title']);
+        page.find('#model-description-subtitle').text(data['subtitle']);
+        page.find('#model-description-text').text(data['description']);
+        page.find('#model-info-url').attr('href', data['info_page_url']);
+        page.find('#model-x3d-title').text(data['model_x3d_title']);
+        page.find('#model-x3d-asset').attr('url', data['model_x3d_path']);
+        page.find('#model-creation-method').text(data['creation_method']);
+      }),
+      $.getJSON(`index.php/dbGetImages?brand=${attrs['brand']}`, (data) => {
+        $.each(data, (key, val) => {
+          page.find('#gallery').append($('<a></a>')
+            .attr('href', val['img_src_path'])
+            .attr('data-fancybox', '')
+            .attr('data-caption', val['description'])
+            .html($('<img></img>')
+              .attr('src', val['img_src_path'])
+              .addClass(['card-img-top', 'img-thumbnail'])));
+        });
+      })
+    ).then(() => {
+      page.find('#camera-reset-btn').click(() => modelSetCamera('front'));
 
+      ['top', 'bottom', 'left', 'right', 'back', 'front'].forEach(camera => {
+        page.find(`#camera-${camera}-btn`).click(() => modelSetCamera(camera));
+      });
 
+      page.find('#rotate-x-btn').click(() => modelRotate('x'));
+      page.find('#rotate-y-btn').click(() => modelRotate('y'));
+      page.find('#rotate-z-btn').click(() => modelRotate('z'));
+      page.find('#rotate-stop-btn').click(() => modelStopRotate());
 
+      page.find('#render-poly-btn').click(() => modelSetPoints(0));
+      page.find('#render-wire-btn').click(() => modelSetPoints(2));
 
+      page.find('#light-headlight-btn').click(() => modelToggleHeadlight());
 
-}
+      ['top', 'bottom', 'left', 'right', 'back', 'front'].forEach(light => {
+        page.find(`#light-${light}-btn`)
+          .click(() => modelTogglePointLight(light));
+      });
+
+      page.find('#light-reset-btn').click(() => {
+        modelSetPoints(0);
+        modelToggleHeadlight(true);
+        ['top', 'bottom', 'left', 'right', 'back', 'front'].forEach(light => {
+          modelTogglePointLight(light, true);
+        });
+      });
+
+      cb(page);
+      window.x3dom.reload();
+    });
+  }
 
 /**
  * Map page key to its respective setup handler 
