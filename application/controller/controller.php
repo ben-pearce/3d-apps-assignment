@@ -12,8 +12,24 @@ class Controller {
     $this->$pageURI();
   }
   
-  function home() {
-    // $data = $this->model->something();
-    $this->load->view('homeView', []);
+  /**
+   * GET
+   * Endpoint: /
+   * 
+   * Gets the required content for the homepage template
+   * and renders the pageView. 
+   * 
+   * Additional content is loaded into this view using AJAX.
+   * 
+   * This only renders a navigation bar and footer.
+   */
+  public function home() {
+    $data = [
+      "strings" => $this->model->getStrings('site'),
+      "brands" => $this->model->getBrands()
+    ];
+    $this->load->view('pageView', $data);
+  }
+
   }
 }
