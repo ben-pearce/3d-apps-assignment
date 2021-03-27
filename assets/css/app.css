@@ -1,6 +1,22 @@
+/******************
+ * Fonts
+ ******************/
+
 @font-face {
-	font-family: cocaColaFont;
-	src: url(../assets/fonts/LOKICOLA.TTF);
+	font-family: CocaColaFont;
+	src: url(../fonts/LOKICOLA.TTF);
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: Oswald;
+  src: url(../fonts/Oswald-Regular.ttf);
+}
+
 }
 
 @font-face {
