@@ -280,6 +280,28 @@ body {
   height: auto;
 }
 
+/******************
+ * Footer
+ ******************/
+
+.footer {
+  color: #FFF;
+  background: var(--primary-color);
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+}
+
+.footer p {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.footer a {
+  color: #FFF;
+  font-weight: bold;
+}
+
 }
 
 @font-face {
