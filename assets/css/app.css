@@ -17,9 +17,27 @@
   src: url(../fonts/Oswald-Regular.ttf);
 }
 
+/******************
+ * Themes
+ ******************/
+
+:root {
+  --cola-red: #F40009;
+  --body-background-color: rgba(0, 0, 0, 0.815);
+  --card-text-color: #FFF;
+  --card-background-color: rgba(0, 0, 0, 0.918);
+  --primary-color: #000;
+  --secondary-color: var(--cola-red);
 }
 
-@font-face {
+[data-theme="day"] {
+  --body-background-color: rgba(247, 247, 247, 0.856);
+  --card-text-color: #000;
+  --card-background-color: rgba(233, 233, 233, 0.918);
+  --primary-color: var(--cola-red);
+  --secondary-color: #000;
+}
+
   font-family: OpenSans;
   src: url(../assets/fonts/OpenSans-Regular.ttf);
 }
