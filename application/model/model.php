@@ -5,7 +5,7 @@ class Model {
   public $dbhandle;
 
   public function __construct() {
-    $dsn = 'sqlite:./application/storage/database.db';
+    $dsn = 'sqlite:./application/storage/database.sqlite';
 
     try {
       $this->dbhandle = new PDO($dsn, 'user', 'password', array(
