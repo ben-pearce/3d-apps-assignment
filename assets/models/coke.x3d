@@ -2,9 +2,9 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
 <X3D xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' profile='Full' version='3.0' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.0.xsd'>
   <Scene DEF='scene'>
-    <TimeSensor DEF='RotationTimer' cycleInterval='3.333' loop='true' enabled='false' startTime='1'/>
+    <TimeSensor DEF='xRotationTimer' cycleInterval='3.333' loop='true' enabled='false' startTime='1'/>
     <Viewpoint DEF='frontCamera' description='frontCamera' orientation='0 -1 0 -2.717' position='1241 0 -2747' fieldOfView='0.6024'/>
-    <NavigationInfo DEF='NavInfo001' type='"EXAMINE"'/>
+    <NavigationInfo DEF='NavInfo' type='"EXAMINE"'/>
     <PointLight DEF='rightLight' intensity='0.4' location='-1190 -80.28 -4.353' radius='17870'/>
     <PointLight DEF='frontLight' intensity='0.4' location='-26.51 -99.81 -930.2' radius='17870'/>
     <PointLight DEF='leftLight' intensity='0.4' location='1068 -120.2 42.89' radius='17870'/>
@@ -14,8 +14,8 @@
     <Viewpoint DEF='backCamera' description='backCamera' orientation='0 1 0 -0.4389' position='-1495 0 3185' fieldOfView='0.6024'/>
     <Viewpoint DEF='leftCamera' description='leftCamera' orientation='0.07907 -0.9956 -0.05077 -1.146' position='2821 317.2 1290' fieldOfView='0.6024'/>
     <Viewpoint DEF='rightCamera' description='rightCamera' orientation='-0.02016 -0.9993 -0.03087 -4.298' position='-3083 208.2 -1354' fieldOfView='0.6024'/>
-    <Viewpoint DEF='cameraTop' description='cameraTop' orientation='0.8165 -0.413 -0.4033 -1.749' position='78.81 4168 60.32' fieldOfView='0.6024'/>
-    <Viewpoint DEF='cameraBottom' description='cameraBottom' orientation='-0.9997 -0.01716 0.01645 -1.529' position='7.89 -5658 239.7' fieldOfView='0.6024'/>
+    <Viewpoint DEF='topCamera' description='topCamera' orientation='0.8165 -0.413 -0.4033 -1.749' position='78.81 4168 60.32' fieldOfView='0.6024'/>
+    <Viewpoint DEF='bottomCamera' description='bottomCamera' orientation='-0.9997 -0.01716 0.01645 -1.529' position='7.89 -5658 239.7' fieldOfView='0.6024'/>
     <Transform DEF='cokeCan' rotation='0.5774 -0.5774 0.5774 -4.189' translation='0 -160.2 180.2'>
       <PositionInterpolator DEF='cokeCan-POS-INTERP' key='0 0.03 0.06 0.09 0.12 0.15 0.18 0.21 0.24 0.27 0.3 0.33 0.36 0.39 0.42 0.45 0.48 0.51 0.54 0.57 0.6 0.63 0.66 0.69 0.72 0.75 0.78 0.81 0.84 0.87 0.9 0.93 0.96 0.99 1' keyValue='0 -160.2 180.2 33.85 -160.2 177 66.49 -160.2 167.5 96.77 -160.2 152 123.6 -160.2 131.1 146 -160.2 105.5 163.3 -160.2 76.22 174.7 -160.2 44.18 179.9 -160.2 10.57 178.7 -160.2 -23.41 171.1 -160.2 -56.56 157.4 -160.2 -87.69 138.1 -160.2 -115.7 114 -160.2 -139.6 85.72 -160.2 -158.5 54.44 -160.2 -171.8 21.24 -160.2 -178.9 -12.71 -160.2 -179.7 -46.2 -160.2 -174.2 -78.05 -160.2 -162.4 -107.1 -160.2 -144.9 -132.4 -160.2 -122.2 -152.9 -160.2 -95.26 -168.1 -160.2 -64.91 -177.3 -160.2 -32.26 -180.2 -160.2 1.524 -176.7 -160.2 35.26 -167 -160.2 67.74 -151.3 -160.2 97.82 -130.3 -160.2 124.4 -104.7 -160.2 146.7 -75.36 -160.2 163.7 -43.36 -160.2 174.9 -9.816 -160.2 179.9 1.503 -160.2 180.2'/>
       <OrientationInterpolator DEF='cokeCan-ROT-INTERP' key='0 0.03 0.06 0.09 0.12 0.15 0.18 0.21 0.24 0.27 0.3 0.33 0.36 0.39 0.42 0.45 0.48 0.51 0.54 0.57 0.6 0.63 0.66 0.69 0.72 0.75 0.78 0.81 0.84 0.87 0.9 0.93 0.96 0.99 1' keyValue='0.5774 -0.5774 0.5774 -4.189 -0.6499 0.5374 -0.5374 -1.989 -0.7214 0.4897 -0.4897 -1.892 -0.79 0.4335 -0.4335 -1.804 -0.8536 0.3684 -0.3684 -1.728 -0.9093 0.2942 -0.2942 -1.666 -0.9541 0.2117 -0.2117 -1.618 -0.9848 0.1226 -0.1226 -1.586 -0.9991 0.02934 -0.02934 -1.572 -0.9958 -0.06496 0.06496 -1.575 -0.975 -0.157 0.157 -1.596 -0.9387 -0.2438 0.2438 -1.634 -0.8894 -0.3232 0.3232 -1.688 -0.8304 -0.394 0.394 -1.756 -0.7646 -0.4557 0.4557 -1.836 -0.6947 -0.5086 0.5086 -1.927 -0.6228 -0.5532 0.5532 -2.028 -0.5502 -0.5905 0.5905 -2.136 -0.4779 -0.6212 0.6212 -2.25 -0.4063 -0.6461 0.6461 -2.37 -0.3359 -0.666 0.666 -2.493 -0.2665 -0.6815 0.6815 -2.621 -0.1982 -0.6931 0.6931 -2.75 -0.1307 -0.701 0.701 -2.882 -0.06369 -0.7057 0.7057 -3.014 0.00299 -0.7071 0.7071 -3.148 0.06968 -0.7054 0.7054 -3.281 0.1367 -0.7005 0.7005 -3.413 0.2043 -0.6922 0.6922 -3.545 0.2726 -0.6803 0.6803 -3.674 0.342 -0.6645 0.6645 -3.801 0.4125 -0.6441 0.6441 -3.924 0.4841 -0.6187 0.6187 -4.043 0.5564 -0.5876 0.5876 -4.157 -0.5806 0.5757 -0.5757 -2.09'/>
@@ -32,8 +32,8 @@
       </Shape>
     </Transform>
     <ROUTE fromNode='cokeCan-ROT-INTERP' fromField='value_changed' toNode='cokeCan' toField='set_rotation'/>
-    <ROUTE fromNode='RotationTimer' fromField='fraction_changed' toNode='cokeCan-POS-INTERP' toField='set_fraction'/>
+    <ROUTE fromNode='xRotationTimer' fromField='fraction_changed' toNode='cokeCan-POS-INTERP' toField='set_fraction'/>
     <ROUTE fromNode='cokeCan-POS-INTERP' fromField='value_changed' toNode='cokeCan' toField='set_translation'/>
-    <ROUTE fromNode='RotationTimer' fromField='fraction_changed' toNode='cokeCan-ROT-INTERP' toField='set_fraction'/>
+    <ROUTE fromNode='xRotationTimer' fromField='fraction_changed' toNode='cokeCan-ROT-INTERP' toField='set_fraction'/>
   </Scene>
 </X3D>
