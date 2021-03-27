@@ -2,6 +2,37 @@
 
 
 
+
+/**
+ * Used for switching between poly and wire mode.
+ * 
+ * i.e. Displaying the model as a wireframe.
+ * 
+ * Parameter is the value returned by x3dom's togglePoints()
+ * method.
+ * 
+ * 0 - Polygom view
+ * 1 - Corner view?
+ * 2 - Wireframe view
+ * 
+ * Also sets the correct radio button to enable in the
+ * render & lighting card on the model page.
+ * 
+ * @param {integer} value The view to switch the model to.
+ */
+function modelSetPoints(value) {
+  if(value === 0) {
+    $('#render-poly-btn').prop('checked', true);
+  } else {
+    $('#render-wire-btn').prop('checked', true);
+  }
+
+  let points = null;
+  while(points !== value) {
+    points = $('#model')[0].runtime.togglePoints(true);
+  }
+}
+
 /**
  * Toggles point light in the 3D model.
  * 
