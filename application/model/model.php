@@ -240,6 +240,15 @@ class Model {
     }
   }
 
+  /**
+   * Selects images for a brand by brand.
+   */
+  public function getImages($brand) {
+    $stmt = $this->db->prepare('SELECT * FROM image WHERE brand = :brand');
+    $stmt->execute(['brand' => $brand]);
+    return $stmt->fetchAll(PDO::FETCH_UNIQUE);
+  }
+
 }
 
 ?>
