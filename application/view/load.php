@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * Load class responsible for loading and rendering views.
+ */
 class Load {
 
-  function view($file_name, $data = null) {
+  /**
+   * Renders a view by name, which will invoke the
+   * php view file under that name (e.g. 'aboutView').
+   */
+  function view($fileName, $data = null) {
     if(is_array($data)) {
       extract($data);
     }
