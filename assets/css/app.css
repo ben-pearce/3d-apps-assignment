@@ -38,8 +38,46 @@
   --secondary-color: #000;
 }
 
+
+/******************
+ * General
+ ******************/
+
+body {
   font-family: OpenSans;
-  src: url(../assets/fonts/OpenSans-Regular.ttf);
+  background: var(--body-background-color);
+}
+
+#content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.card {
+  color: var(--card-text-color);
+  border: 0px;
+  background:var(--card-background-color);
+  border-radius: 10px;
+
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.75);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-header {
+  font-weight: bold;
+  color: #FFF;
+  background: var(--cola-red);
+  
+}
+
+.card-header:first-child {
+  border-radius: 10px 10px 0 0;
+}
 }
 
 @font-face {
