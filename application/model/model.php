@@ -167,6 +167,79 @@ class Model {
     }
   }
 
+  /**
+   * Gets a model from the datastore by brand.
+   */
+  public function getModel($brand) {
+    try {
+      $stmt = $this->db->prepare('SELECT * FROM model WHERE brand = :brand');
+      $stmt->execute(['brand' => $brand]);
+      return $stmt->fetch();
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Selects all models from the datastore.
+   */
+  public function getModels() {
+    try {
+      $stmt = $this->db->prepare('SELECT * FROM model');
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_UNIQUE);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Creates a new model in the data store.
+   */
+  public function createModel(
+    $brand, 
+    $title, 
+    $subtitle, 
+    $description, 
+    $creationMethod, 
+    $modelPath, 
+    $modelTitle, 
+    $pageUrl) {
+    try {
+      $stmt = $this->db->prepare('INSERT INTO model 
+        (brand, title, subtitle, description, 
+        creation_method, model_x3d_path, model_x3d_title, 
+        info_page_url)
+        VALUES (:brand, :title, :subtitle, :description, 
+        :creationMethod, :modelPath, :modelTitle, 
+        :pageUrl)');
+      $stmt->execute([
+        'brand' => $brand,
+        'title' => $title,
+        'subtitle' => $subtitle,
+        'description' => $description,
+        'creationMethod' => $creationMethod,
+        'modelPath' => $modelPath,
+        'modelTitle' => $modelTitle,
+        'pageUrl' => $pageUrl
+      ]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Deletes a model from the datastore.
+   */
+  public function deleteModel($id) {
+    try {
+      $stmt = $this->db->prepare('DELETE FROM model WHERE id = :id');
+      $stmt->execute(['id' => $id]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
 }
 
 ?>
