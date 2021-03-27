@@ -111,5 +111,84 @@ class Controller {
     $this->model->install();
     $this->load->view('messageView', 'Database scripts executed');
   }
+
+  /**
+   * GET
+   * Endpoint: /dbGetBrands
+   * 
+   * Used to get details of brands stored in the data
+   * model.
+   * 
+   * Responds with JSON packet which will be called
+   * by AJAX to load additional content into the various
+   * pages.
+   */
+  public function dbGetBrands() {
+    header('Content-Type: application/json');
+    $data = $this->model->getBrands();
+    $this->load->raw(json_encode($data));
+  }
+
+  /**
+   * GET
+   * Endpoint: /dbGetBrand
+   * 
+   * Params: 
+   *  - brand: The brand to get details about.
+   * 
+   * Used to get details of a single brand.
+   * 
+   * Responds with JSON packet which will be called
+   * by AJAX.
+   */
+  public function dbGetBrand() {
+    header('Content-Type: application/json');
+    $data = $this->model->getBrand($_GET['brand']);
+    $this->load->raw(json_encode($data));
+  }
+
+  /**
+   * POST
+   * Endpoint: /dbCreateBrand
+   * 
+   * Params:
+   *  - id: The ID of the new brand.
+   *  - name: The name of the new brand.
+   *  - description: The description of the new brand.
+   *  - note: The note of the new brand.
+   *  - imgPath: The path of the image asset for new brand.
+   * 
+   * Used to create a new brand inside the underlying 
+   * datastore.
+   * 
+   * Reponds with a message to confirm success.
+   */
+  public function dbCreateBrand() {
+    $this->model->createBrand(
+      $_POST['id'], 
+      $_POST['name'], 
+      $_POST['description'], 
+      $_POST['note'], 
+      $_POST['imgPath']);
+    $this->load->view('messageView', 'Created new brand ' . $_POST['id']);
+  }
+
+  /**
+   * DELETE
+   * Endpoint: /dbDeleteBrand
+   * 
+   * Params:
+   *  - id: The ID of brand to delete.
+   * 
+   * Used to delete a brand from the underlying 
+   * datastore.
+   * 
+   * Responds with a message to confirm success.
+   */
+  public function dbDeleteBrand() {
+    $this->model->deleteBrand($_GET['id']);
+    $this->load->view('messageView', 'Deleted brand ' . $_GET['id']);
+  }
+
   }
 }
