@@ -147,11 +147,11 @@
           <p>
             &copy; 2021 Mobile Web 3D Applications | 
             <a 
-              href="/statement-of-originality.html"
+              href="statement-of-originality.html"
               target="_blank">
               Statement of Originality</a> |
             <a 
-              href="/references.html" 
+              href="references.html" 
               target="_blank">References</a> |
             <button 
               id="theme-btn" 

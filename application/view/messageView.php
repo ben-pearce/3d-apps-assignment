@@ -8,6 +8,6 @@
     <hr>
     <p><?= $data ?></p>
     <hr>
-    <a href="/">Back to homepage</a>
+    <a href="../index.php">Back to homepage</a>
   </body>
 </html>

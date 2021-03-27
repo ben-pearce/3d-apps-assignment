@@ -22,12 +22,12 @@
         </li>
         <li>
           <a 
-            href="/models.zip"
+            href="models.zip"
             target="_blank">3D Models Download (x3d & vrml)</a> (.zip)
         </li>
         <li>
           <a 
-            href="/archives.zip"
+            href="archives.zip"
             target="_blank">3DS Max Model Archives Download</a> (.zip)
         </li>
       </ul>
@@ -132,7 +132,7 @@
 
       <h3>
         References
-        <small>[<a href="/references.html" target="_blank">raw</a>]</small>
+        <small>[<a href="references.html" target="_blank">raw</a>]</small>
       </h3>
       <ul>
         <li>
@@ -201,7 +201,7 @@
       <h3>
         Statement of Originality
         <small>
-          [<a href="/statement-of-originality.html" target="_blank">raw</a>]
+          [<a href="statement-of-originality.html" target="_blank">raw</a>]
         </small>
       </h3>
       <p>
