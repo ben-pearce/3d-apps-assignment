@@ -130,6 +130,55 @@ body {
 .navbar-coke .navbar-toggler {
   border-color: white;
 }
+
+/******************
+ * Logo
+ ******************/
+
+.logo {
+  margin-top: 25px;
+}
+  
+.logo h1 {
+  font-family: CocaColaFont;
+  font-size: 31px;
+  margin: 0;
+  margin-top: -5px;
+  margin-bottom: -20px;
+  float: left;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 2px;
+}
+  
+.logo h2 {
+  font-family: CocaColaFont;
+  font-size: 31px;
+  margin-top: -1px;
+  margin-bottom: -20px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 3px;
+  float: left;
+}
+  
+.logo h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: -10px;
+  padding-top: 0px;
+  padding-left: 0px;
+  float: left;
+}
+  
+.logo p {
+  font-size: 12px;
+  margin-top: 27px;
+  margin-bottom: -5px;
+  padding-top: 0px;
+  padding-left: 3px;
+}
 }
 
 @font-face {
