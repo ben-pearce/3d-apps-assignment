@@ -5,6 +5,19 @@
 
 
 /**
+ * Set a new camera viewpoint in the 3D model.
+ * 
+ * Assuming model has cameras named in format 
+ * [camera]Camera, it will bind the camera for
+ * whichever camera has been passed in as an argument.
+ * 
+ * @param {string} camera The camera to enable.
+ */
+function modelSetCamera(camera) {
+  $(`#model__${camera}Camera`).attr('bind', 'true');
+}
+
+/**
  * Enables a rotation timer in the 3D model.
  * 
  * Assuming model has a rotation timer in format
