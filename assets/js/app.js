@@ -16,6 +16,42 @@
  * required for each page.
  */
 class PageSetupHandlers {
+  /**
+   * Page handler for home page.
+   * 
+   * Gets some text content required from the back-end and loads it
+   * into the homepage.
+   * 
+   * Also applies the brands content to the home page view.
+   * 
+   * @param {object} page The new page content jQuery object.
+   * @param {object} attrs Attributes for the new page.
+   * @param {function} cb The callback to invoke upon completion.
+   */
+  static home(page, attrs, cb) {
+    $.when(
+      $.getJSON('index.php/dbGetStrings?for=home', (data) => {
+        page.find('.main-image-text #title').text(data['home.title']);
+        page.find('.main-image-text #subtitle').text(data['home.subtitle']);
+        page.find('.main-image-text #description')
+          .text(data['home.description']);
+      }),
+      $.getJSON('index.php/dbGetBrands', (data) => {
+        for(const [brandId, brand] of Object.entries(data)) {
+          page.find(`#brand-thumbnail-${brandId}`)
+            .attr('data-caption', brand['note'])
+            .attr('href', brand['img_src_path']);
+          page.find(`#brand-img-${brandId}`)
+            .attr('src', brand['img_src_path']).attr('alt', brand['long_name']);
+          page.find(`#brand-title-${brandId}`).text(brand['long_name']);
+          page.find(`#brand-subtitle-${brandId}`).text(brand['note']);
+          page.find(`#brand-description-${brandId}`).text(brand['description']);
+        }
+      })
+    ).then(() => {
+      cb(page);
+    });
+  }
 
 
 
