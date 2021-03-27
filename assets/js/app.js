@@ -1,6 +1,30 @@
 
 
 
+
+/**
+ * Toggles point light in the 3D model.
+ * 
+ * Assuming model has lights in format [direction]Light
+ * it will set the light state on or off.
+ * 
+ * Also sets active class value on the appropriate button
+ * to indicate whether light is on or off.
+ * 
+ * @param {string} direction The direction of light to toggle.
+ * @param {boolean} newState Boolean that indicates whether to toggle 
+ * light on or off.
+ */
+function modelTogglePointLight(direction, newState) {
+  if(newState === undefined) {
+    const currentState = $(`#model__${direction}Light`).attr('on');
+    newState = currentState !== 'true';
+  }
+
+  $(`#model__${direction}Light`).attr('on', newState);
+  $(`#light-${direction}-btn`).toggleClass('active', newState);
+}
+
 /**
  * Toggles headlight on the 3D model NavInfo.
  * 
