@@ -99,5 +99,17 @@ class Controller {
   public function apiGetModel() {
     $this->load->view('modelView', []);
   }
+
+  /**
+   * GET
+   * Endpoint: /dbInstall
+   * 
+   * Used to install the database using the underlying 
+   * data model which will invoke some SQL scripts.
+   */
+  public function dbInstall() {
+    $this->model->install();
+    $this->load->view('messageView', 'Database scripts executed');
+  }
   }
 }
