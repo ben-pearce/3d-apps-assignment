@@ -1,5 +1,25 @@
 
 
+
+/**
+ * Toggles headlight on the 3D model NavInfo.
+ * 
+ * Also sets active class on headlight button to indicate
+ * whether headlight is on or off.
+ * 
+ * @param {boolean} newState Boolean that indicates whether to toggle
+ * headlight on or off.
+ */
+function modelToggleHeadlight(newState) {
+  if(newState === undefined) {
+    const  currentState = $(`#model__NavInfo`).attr('headlight');
+    newState = currentState !== 'true';
+  }
+
+  $(`#model__NavInfo`).attr('headlight', newState.toString());
+  $('#light-headlight-btn').toggleClass('active', newState)
+}
+
 /**
  * This function will toggle between day and night theme by
  * applying a data attribute to DOM parent element.
