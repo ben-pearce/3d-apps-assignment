@@ -7,7 +7,7 @@ class Load {
       extract($data);
     }
 
-    include $file_name . '.php';
+    include $fileName . '.php';
   }
 
 }
