@@ -108,6 +108,65 @@ class Model {
     }
   }
 
+  /**
+   * Selects a brand from the brand table by ID and returns it.
+   */
+  public function getBrand($brand) {
+    try {
+      $stmt = $this->db->prepare('SELECT * FROM brand WHERE id = :brand');
+      $stmt->execute(['brand' => $brand]);
+      return $stmt->fetch();
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Selects all brands from the brand table and returns them
+   * as an indexed array.
+   */
+  public function getBrands() {
+    try {
+      $stmt = $this->db->prepare('SELECT * FROM brand');
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_UNIQUE);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Creates a new brand in the datastore.
+   */
+  public function createBrand($id, $name, $description, $note, $imgPath) {
+    try {
+      $stmt = $this->db->prepare('INSERT INTO brand 
+        (id, long_name, short_name, description, note, img_src_path) 
+        VALUES (:id, :name, :name, :description, :note, :imgPath)');
+      $stmt->execute([
+        'id' => $id, 
+        'name' => $name, 
+        'description' => $description, 
+        'note' => $note, 
+        'imgPath' => $imgPath
+      ]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Deletes a brand by ID.
+   */
+  public function deleteBrand($id) {
+    try {
+      $stmt = $this->db->prepare('DELETE FROM brand WHERE id = :id');
+      $stmt->execute(['id' => $id]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
 }
 
 ?>
