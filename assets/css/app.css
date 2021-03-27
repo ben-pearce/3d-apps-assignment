@@ -302,9 +302,50 @@ body {
   font-weight: bold;
 }
 
+/******************
+ * Small devices
+ ******************/
+@media (min-width: 576px) { 
+  .gallery .img-thumbnail {
+    max-width: 25%;
+  }
+
+  .light-btns .btn, 
+  .animation-btns .btn, 
+  .camera-btns .btn {
+    font-size: 0.8rem;
+    padding: .275rem .35rem;
+  }
 }
 
-@font-face {
-  font-family: Oswald;
-  src: url(../assets/fonts/Oswald-Regular.ttf);
+/******************
+ * Medium devices
+ ******************/
+@media (min-width: 768px) { 
+  .gallery .img-thumbnail {
+    max-width: 25%;
+  }
+
+  .light-btns .btn, 
+  .animation-btns .btn, 
+  .camera-btns .btn {
+    font-size: 0.8rem;
+    padding: .275rem .35rem;
+  }
+}
+
+/******************
+ * Large devices
+ ******************/
+@media (min-width: 992px) { 
+  .gallery .img-thumbnail {
+    max-width: 43%;
+  }
+
+  .light-btns .btn, 
+  .animation-btns .btn, 
+  .camera-btns .btn {
+    font-size: 1rem;
+    padding: .375rem .75rem;
+  }
 }
