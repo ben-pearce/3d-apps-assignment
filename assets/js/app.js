@@ -434,3 +434,13 @@ function switchTheme() {
     $('#theme-btn').text('Night Theme');
   }
 }
+
+/**
+ * Document onReady handler which switches to the 
+ * home page by invoking the go() method.
+ */
+$(document).ready(() => {
+  go('home');
+
+  $('#theme-btn').click(switchTheme);
+});
