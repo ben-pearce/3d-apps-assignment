@@ -3,6 +3,30 @@
 
 
 
+
+/**
+ * Enables a rotation timer in the 3D model.
+ * 
+ * Assuming model has a rotation timer in format
+ * [direction]RotationTimer, it will enable the rotation
+ * timer for that direction.
+ * 
+ * @param {string} direction The direction of the timer to enable.
+ */
+function modelRotate(direction) {
+  modelStopRotate();
+  $(`#model__${direction}RotationTimer`).attr('enabled', 'true');
+}
+
+/**
+ * Disables all rotation timers.
+ */
+function modelStopRotate() {
+  $(`#model__xRotationTimer`).attr('enabled', 'false');
+  $(`#model__yRotationTimer`).attr('enabled', 'false');
+  $(`#model__zRotationTimer`).attr('enabled', 'false');
+}
+
 /**
  * Used for switching between poly and wire mode.
  * 
