@@ -10,6 +10,15 @@ class Load {
     include $fileName . '.php';
   }
 
+  /**
+   * Renders some raw data.
+   * 
+   * Mostly used for rendering JSON responses.
+   */
+  function raw($data) {
+    print($data);
+  }
+
 }
 
 ?>
