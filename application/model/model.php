@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Data model which provides a controller
+ * access to the underlying datastore via an API.
+ */
 class Model {
 
   /**
@@ -8,6 +12,12 @@ class Model {
    */
   public $db;
 
+  /**
+   * Model constructor.
+   * 
+   * Responsible for opening SQLite datastore file and 
+   * assigning the PDO instance to this class.
+   */
   public function __construct() {
     $dsn = 'sqlite:./application/storage/database.sqlite';
 
