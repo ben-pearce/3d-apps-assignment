@@ -46,6 +46,68 @@ class Model {
     }
   }
 
+  /**
+   * Selects a string from the string table and returns
+   * the value.
+   */
+  public function getString($key) {
+    try {
+      $stmt = $this->db->prepare('SELECT value FROM strings WHERE key = :key');
+      $stmt->execute(['key' => $key]);
+      return $stmt->fetch()['value'];
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Selects strings from the string table based on a prefix
+   * supplied via an argument. Prefix means that the string's key
+   * must start with the string supplied.
+   * 
+   * For example.
+   *  > getStrings('home')
+   * 
+   * Will return all strings with a key that begins with home such as
+   *  home.title, home.subtitle
+   */
+  public function getStrings($prefix = '') {
+    try {
+      $prefix = "$prefix%";
+      $stmt = $this->db->prepare('SELECT key, value FROM 
+        strings WHERE key LIKE ?');
+      $stmt->execute([$prefix]);
+      return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Inserts a new string into the datastore based on key
+   * and value passed in as arguments.
+   */
+  public function createString($key, $value) {
+    try {
+      $stmt = $this->db->prepare('INSERT OR REPLACE INTO strings (key, value) VALUES (:key, :value)');
+      $stmt->execute(['key' => $key, 'value' => $value]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Deletes a string by key.
+   */
+  public function deleteString($key) {
+    try {
+      $stmt = $this->db->prepare('DELETE FROM strings WHERE key = :key');
+      $stmt->execute(['key' => $key]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
 }
 
 ?>
