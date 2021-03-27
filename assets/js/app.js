@@ -137,6 +137,90 @@ class PageSetupHandlers {
     });
   }
 
+  /**
+   * Page handler for about page.
+   * 
+   * Binds functionality for the buttons on the about page.
+   * 
+   * @param {object} page The new page content jQuery object.
+   * @param {object} attrs Attributes for the new page.
+   * @param {function} cb The callback to invoke upon completion.
+   */
+  static about(page, attrs, cb) {
+
+    page.find('#about-theme-btn').click(switchTheme);
+    page.find('#about-brand-create-btn').click(() => {
+      $.post('index.php/dbCreateBrand', {
+        'id': 'test',
+        'name': 'Test Brand',
+        'description': 'Established 2021',
+        'note': 'The best test brand',
+        'imgPath': 'assets/images/brand.jpg'
+      }, () => {
+        $.getJSON('index.php/dbGetBrand?brand=test', 
+          data => alert(JSON.stringify(data)));
+      })
+    });
+    page.find('#about-brand-delete-btn').click(() => {
+      $.ajax({
+        url: 'index.php/dbDeleteBrand?id=test', 
+        type: 'DELETE',
+        success: () => {
+          $.getJSON('index.php/dbGetBrand?brand=test', 
+            data => alert(JSON.stringify(data)));
+        }
+      });
+    });
+    page.find('#about-model-create-btn').click(() => {
+      $.post('index.php/dbCreateModel', {
+        'brand': 'test',
+        'title': 'Test Model',
+        'subtitle': 'Testing a model',
+        'description': 'This is a model to demonstrate CRUD',
+        'creationMethod': 'This model was never created',
+        'modelPath': 'assets/models/model.x3d',
+        'modelTitle': 'Test X3D model',
+        'pageUrl': 'http://sussex.ac.uk'
+      }, () => {
+        $.getJSON('index.php/dbGetModel?brand=test', 
+          data => alert(JSON.stringify(data)));
+      })
+    });
+    page.find('#about-model-delete-btn').click(() => {
+      $.getJSON('index.php/dbGetModel?brand=test', data =>
+        $.ajax({
+          type: 'DELETE',
+          url: `index.php/dbDeleteModel?id=${data['id']}`, 
+          success: () => {
+            $.getJSON('index.php/dbGetModel?brand=test', 
+              data => alert(JSON.stringify(data)));
+          }
+        })
+      );
+    });
+    page.find('#about-string-create-btn').click(() => {
+      $.post('index.php/dbCreateString', {
+        'key': 'test.string',
+        'value': `This is a test (${new Date()})`
+      }, () => {
+        $.getJSON('index.php/dbGetString?key=test.string', 
+          data => alert(JSON.stringify(data)));
+      })
+    });
+    page.find('#about-string-delete-btn').click(() => {
+      $.ajax({
+        url: 'index.php/dbDeleteString?key=test.string', 
+        type: 'DELETE',
+        success: () => {
+          $.getJSON('index.php/dbGetString?key=test.string', 
+            data => alert(JSON.stringify(data)));
+        }
+      });
+    });
+    cb(page);
+  }
+}
+
 /**
  * Map page key to its respective setup handler 
  * method. 
