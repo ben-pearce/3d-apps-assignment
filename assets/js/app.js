@@ -1,8 +1,116 @@
 
+/**
+ * This class contains a number of static  methods 
+ * which will be invoked prior to updating the page
+ * content.
+ * 
+ * Each time the user switches pages the go() method
+ * will invoke a method from this class which will in turn
+ * collect any data required for that page from the backend
+ * and load it into the new page content.
+ * 
+ * It may also assign page event listeners like on click
+ * event handlers for buttons.
+ * 
+ * This is really just a neat way of separating code
+ * required for each page.
+ */
+class PageSetupHandlers {
 
 
 
 
+
+
+}
+
+/**
+ * Map page key to its respective setup handler 
+ * method. 
+ * 
+ * This is used by the go() method to dicover which
+ * setup handler method it should invoke when switching
+ * between pages.
+ * 
+ */
+const pageHandlers = {
+  'home': PageSetupHandlers.home,
+  'model': PageSetupHandlers.model,
+  'about': PageSetupHandlers.about
+};
+
+/**
+ * This method is responsible for loading a new page
+ * dynamically from the back-end using the MVC model.
+ * 
+ * First it displays a bootstrap spinner to indicate
+ * loading is in progress by replacing the content 
+ * tag inner HTML.
+ * 
+ * Then it starts an AJAX request call to the backend for
+ * the content of the new page.
+ * 
+ * It invokes a setup function from PageSetupHandlers to
+ * ensure the page is ready to be displayed, with any
+ * other content loaded in and any event listeners
+ * set.
+ * 
+ * Finally it replaced the content tag inner HTML again 
+ * this time with the content for the new page.
+ * 
+ * @param {string} page The page to switch to (i.e. 'home').
+ * @param {object} attrs Attributes object that will be 
+ * passed to the page setup method.
+ */
+function go(page, attrs) {
+  // remove 'active' class from all navbar links
+  $(`.navbar-nav *[data-page-link]`).removeClass('active');
+  let pageLink = $(`.navbar-nav *[data-page-link="${page}"]`)
+
+  if(attrs) {
+    pageLink = pageLink.filter(`[data-page-attrs='${JSON.stringify(attrs)}']`)
+  }
+
+  // apply 'active' call to the navbar link for the new page
+  pageLink.addClass('active');
+
+  $('#content').html($('<div></div>')
+    .addClass('text-center').html($('<div></div>')
+      .addClass(['text-danger', 'mt-5', 'mb-5', 'spinner-border'])
+      .attr('role', 'status')))
+
+  // find the correct page handler to execute
+  const pageHandler = pageHandlers[page];
+
+  // encode attributes as URL params so they can be passed to the backend
+  // as GET parameters.
+  const searchParams = new URLSearchParams(attrs).toString();
+
+  // submit ajax request with correct page and GET url params.
+  $.ajax(
+    `index.php/apiGet${page.charAt(0).toUpperCase() + page.slice(1)}?${searchParams}`, 
+  {
+    success: (data) => {
+      // ask page handler to setup page
+      pageHandler($($.parseHTML(data)), attrs, (page) => {
+        // set new page content
+        $('#content').html(page);
+
+        // re-apply all page links (there may be new ones).
+        $('*[data-page-link]').each((i, pageLink) => {
+          pageLink = $(pageLink);
+          pageLink.off('click');
+          pageLink.one('click', () => {
+            go(pageLink.data('page-link'), pageLink.data('page-attrs'));
+          });
+        });
+      });
+    },
+    error: () => {
+      $('#content').html($('<p></p>').text('Error loading content'));
+    }
+  })
+}
 
 /**
  * Set a new camera viewpoint in the 3D model.
