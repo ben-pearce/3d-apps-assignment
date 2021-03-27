@@ -1,3 +1,10 @@
+/**
+ * @author Ben <bp228@sussex.ac.uk>
+ * 
+ * This file contains all of the custom JavaScript 
+ * required for the 3D app.
+ */
+
 
 /**
  * This class contains a number of static  methods 
