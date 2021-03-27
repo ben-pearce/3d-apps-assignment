@@ -190,5 +190,74 @@ class Controller {
     $this->load->view('messageView', 'Deleted brand ' . $_GET['id']);
   }
 
+  /**
+   * GET
+   * Endpoint: /dbGetStrings
+   * 
+   * Params:
+   *  - for: The prefix for strings to return (optional)
+   * 
+   * Used to get strings for pages from the underlying 
+   * datastore.
+   * 
+   * Responds with JSON packet which will be called
+   * by AJAX.
+   */
+  public function dbGetStrings() {
+    header('Content-Type: application/json');
+    $prefix = isset($_GET['for']) ? $_GET['for'] : '';
+    $data = $this->model->getStrings($prefix);
+    $this->load->raw(json_encode($data));
   }
+
+  /**
+   * GET
+   * Endpoint: /dbGetString
+   * 
+   * Params:
+   *  - key: The key of the string to return.
+   * 
+   * Used to get a single string from the underlying datastore.
+   * 
+   * Responds with a JSON packet which will be called by AJAX.
+   */
+  public function dbGetString() {
+    header('Content-Type: application/json');
+    $data = $this->model->getString($_GET['key']);
+    $this->load->raw(json_encode($data));
+  }
+
+  /**
+   * POST
+   * Endpoint: /dbCreateString
+   * 
+   * Params:
+   *  - key: The key of the new string.
+   *  - value: The value of the new string.
+   * 
+   * Used to create a new string in the underlying datastore.
+   * 
+   * Reponds with a message to confirm success.
+   */
+  public function dbCreateString() {
+    $this->model->createString($_POST['key'], $_POST['value']);
+    $this->load->view('messageView', 'Created new string ' . $_POST['key']);
+  }
+
+  /**
+   * DELETE
+   * Endpoint: /dbDeleteString
+   * 
+   * Params:
+   *  - key: The key of the string to delete.
+   * 
+   * Used to delete a string from the underlying datastore.
+   * 
+   * Responds with a message to confirm success.
+   */
+  public function dbDeleteString() {
+    $this->model->deleteString($_GET['key']);
+    $this->load->view('messageView', 'Deleted string ' . $_GET['key']);
+  }
+  
 }
