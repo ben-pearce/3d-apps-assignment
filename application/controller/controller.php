@@ -342,4 +342,22 @@ class Controller {
     $this->load->view('messageView', 'Deleted model ' . $_GET['id']);
   }
 
+  /**
+   * GET
+   * Endpoint: /dbGetImages
+   * 
+   * Params:
+   *  - brand: The brand to get images for.
+   * 
+   * Gets paths to the images for a particular brand
+   * from the underlying datastore.
+   * 
+   * Responds with JSON packet 
+   */
+  public function dbGetImages() {
+    header('Content-Type: application/json');
+    $data = $this->model->getImages($_GET['brand']);
+    $this->load->raw(json_encode($data));
+  }
+
 }
