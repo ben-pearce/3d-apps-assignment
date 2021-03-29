@@ -137,10 +137,16 @@
             <li>
               <code>/dbDeleteString</code> - Deletes a string record.
             </li>
+            <li>
+              <code>/dbCreateTexture</code> - Creates a new texture record.
+            </li>
+            <li>
+              <code>/dbDeleteTexture</code> - Deletes a texture record.
+            </li>
           </ul>
           <br>
           Although the UI does not have any use for these, they can be tested
-          below:
+          below (check dev tools to see the requests in real-time!):
           <br>
           <button 
             id="about-brand-create-btn"
@@ -162,6 +168,14 @@
           <button 
             id="about-string-delete-btn"
             class="btn btn-outline-secondary btn-sm">Delete test string</button>
+          <br><br>
+          <button 
+            id="about-texture-create-btn"
+            class="btn btn-outline-secondary btn-sm">Create test texture</button>
+          <button 
+            id="about-texture-delete-btn"
+            class="btn btn-outline-secondary btn-sm">Delete test texture</button>
+          <br><br>
         </li>
       </ul>
 
