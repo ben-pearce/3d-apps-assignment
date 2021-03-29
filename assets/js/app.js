@@ -121,7 +121,8 @@ class PageSetupHandlers {
       page.find('#rotate-z-btn').click(() => modelRotate('z'));
       page.find('#rotate-stop-btn').click(() => modelStopRotate());
 
-      page.find('#render-poly-btn').click(() => modelSetPoints(0));
+      page.find('#render-fill-btn').click(() => modelSetPoints(0));
+      page.find('#render-points-btn').click(() => modelSetPoints(1));
       page.find('#render-wire-btn').click(() => modelSetPoints(2));
 
       page.find('#light-headlight-btn').click(() => modelToggleHeadlight());
