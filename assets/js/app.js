@@ -428,6 +428,22 @@ function modelToggleHeadlight(newState) {
 }
 
 /**
+ * Applies a new texture to the currently loaded model.
+ * 
+ * Also applies the active class to the appropriate dropdown
+ * menu item to indicate which one is selected.
+ * 
+ * @param {string} textureUrl The path to the updated texture.
+ */
+function modelApplyTexture(textureUrl) {
+  $('#flavours-tab .dropdown-item').toggleClass('active', false);
+  $(`#flavours-tab .dropdown-item[data-texture-src='${textureUrl}']`)
+    .toggleClass('active', true);
+
+  $('#model__texture').attr('url', textureUrl);
+}
+
+/**
  * This function will toggle between day and night theme by
  * applying a data attribute to DOM parent element.
  * 
