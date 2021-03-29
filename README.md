@@ -9,8 +9,8 @@ Below are additional resources which were used or produced during the creation o
 ### Related Links
 
 - [GitHub Repository](https://github.com/ketnipz/3d-apps-assignment)
-- [3D Models Download (x3d & vrml)]() (.zip)
-- [3DS Max Model Archives Download]() (.zip)
+- [3D Models Download (x3d)](https://github.com/ketnipz/3d-apps-assignment/blob/main/models.zip) (.zip)
+- [3DS Max Model Archives Download](https://github.com/ketnipz/3d-apps-assignment/blob/main/archives.zip) (.zip)
 
 ### Screenshots
 
