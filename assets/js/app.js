@@ -239,6 +239,31 @@ class PageSetupHandlers {
         }
       });
     });
+    page.find('#about-texture-create-btn').click(() => {
+      $.post('index.php/dbCreateTexture', {
+        'model': 1,
+        'name': 'Coke Test',
+        'textureSrcPath': 'textures/coke_test.jpg'
+      }, () => {
+        $.getJSON('index.php/dbGetTextures?model=1', 
+          data => alert(JSON.stringify(data)));
+      })
+    });
+    page.find('#about-texture-delete-btn').click(() => {
+      $.getJSON('index.php/dbGetTextures?model=1', data => {
+        let test = Object.values(data).find(f => f['name'] === 'Coke Test');
+        $.ajax({
+          type: 'DELETE',
+          url: `index.php/dbDeleteTexture?id=${test['id']}`, 
+          success: () => {
+            $.getJSON('index.php/dbGetTextures?model=1', 
+              data => alert(JSON.stringify(data)));
+          }
+        })
+      }
+
+      );
+    });
     cb(page);
   }
 }
