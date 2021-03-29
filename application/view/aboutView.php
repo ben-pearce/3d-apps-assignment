@@ -177,6 +177,16 @@
             class="btn btn-outline-secondary btn-sm">Delete test texture</button>
           <br><br>
         </li>
+        <li>
+          An advanced renderer (<b>Arnold</b>) has been used to 
+          render photorealistic images of each model
+          (the last two renderings in each image gallery).
+        </li>
+        <li>
+          Some brands support a texture panel (accessible via the "Flavours"
+          drop-down above the 3D model). This allows user to apply a new
+          texture to the model dynamically after it has been loaded.
+        </li>
       </ul>
 
       <h3>
