@@ -251,6 +251,49 @@ class Model {
   }
 
   /**
+   * Gets textures from the datastore by model.
+   */
+  public function getTextures($model) {
+    try {
+      $stmt = $this->db->prepare('SELECT * FROM texture WHERE model = :model');
+      $stmt->execute(['model' => $model]);
+      return $stmt->fetchAll();
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Creates a new texture in the datastore.
+   */
+  public function createTexture($model, $name, $textureSrcPath) {
+    try {
+      $stmt = $this->db->prepare('INSERT INTO texture 
+        (model, name, texture_src_path)
+        VALUES (:model, :name, :textureSrcPath)');
+      $stmt->execute([
+        'model' => $model,
+        'name' => $name,
+        'textureSrcPath' => $textureSrcPath
+      ]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
+   * Deletes a texture from the datastore.
+   */
+  public function deleteTexture($id) {
+    try {
+      $stmt = $this->db->prepare('DELETE FROM texture WHERE id = :id');
+      $stmt->execute(['id' => $id]);
+    } catch(PDOException $e) {
+      print new Exception($e->getMessage());
+    }
+  }
+
+  /**
    * Selects images for a brand by brand.
    */
   public function getImages($brand) {
