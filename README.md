@@ -37,7 +37,11 @@ A few elements have been implemented into this application which are not essenti
   - `/dbDeleteBrand` - Delete a brand record.
   - `/dbCreateString` - Creates or updates an existing string value.
   - `/dbDeleteString` - Deletes a string record.
- 
+  - `/dbCreateTexture` - Creates a new texture record.
+  - `/dbDeleteTexture` - Deletes a texture record.
+- An advanced renderer (**Arnold**) has been used to render photorealistic images of each model (the last two renderings in each image gallery).
+- Some brands support a texture panel (accessible via the "Flavours" drop-down above the 3D model). This allows user to apply a new texture to the model dynamically after it has been loaded.
+
 ### References
 
 - jQuery AJAX https://api.jquery.com/jquery.ajax/ [accessed: 23.03.21]
