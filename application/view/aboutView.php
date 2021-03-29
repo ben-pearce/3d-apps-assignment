@@ -23,7 +23,7 @@
         <li>
           <a 
             href="models.zip"
-            target="_blank">3D Models Download (x3d & vrml)</a> (.zip)
+            target="_blank">3D Models Download (x3d)</a> (.zip)
         </li>
         <li>
           <a 
