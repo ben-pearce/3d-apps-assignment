@@ -2,7 +2,7 @@ INSERT INTO strings (key, value) VALUES ('home.title', 'Coca Cola Great Britain'
 INSERT INTO strings (key, value) VALUES ('home.subtitle', 'Founded in 1886 Dr John S Pemberton');
 INSERT INTO strings (key, value) VALUES ('home.description', 'The Coca Cola Company is the world''s leading manufacturer, marketer and distributor of non-alchoholic beverage concentrates and syrups, and produces nearly 400 brands.');
 INSERT INTO strings (key, value) VALUES ('model.gallery.title', '3D Images');
-INSERT INTO strings (key, value) VALUES ('model.gallery.description', 'These 3D images of the are rendered in 3DS Max and Mental Ray.');
+INSERT INTO strings (key, value) VALUES ('model.gallery.description', 'These 3D images of the object are rendered in 3DS Max and Arnold.');
 INSERT INTO strings (key, value) VALUES ('model.camera.title', 'Camera Views');
 INSERT INTO strings (key, value) VALUES ('model.camera.subtitle', 'These buttons select a range of X3D model viewpoints.');
 INSERT INTO strings (key, value) VALUES ('site.tagline', 'Refreshing the world, one story at a time');
