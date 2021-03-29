@@ -97,6 +97,20 @@ class PageSetupHandlers {
         page.find('#model-x3d-title').text(data['model_x3d_title']);
         page.find('#model-x3d-asset').attr('url', data['model_x3d_path']);
         page.find('#model-creation-method').text(data['creation_method']);
+        $.getJSON(`index.php/dbGetTextures?model=${data['id']}`, data => {
+          page.find('#flavours-tab').toggle(data.length > 1);
+          data.forEach(flavour => {
+            let button = $('<button></button>')
+              .addClass(['dropdown-item'])
+              .attr('data-texture-src', flavour['texture_src_path'])
+              .text(flavour['name']);
+            button.click(() => modelApplyTexture(flavour['texture_src_path']));
+            page.find('#flavours-tab .dropdown-menu').append(
+              $('<li></li>').append(button));
+            page.find('#flavours-tab .dropdown-item:first')
+              .toggleClass('active', true);
+          });
+        });
       }),
       $.getJSON(`index.php/dbGetImages?brand=${attrs['brand']}`, (data) => {
         $.each(data, (key, val) => {
