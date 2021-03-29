@@ -32,6 +32,41 @@
         </li>
       </ul>
 
+      <h3>Site Map</h3>
+      <ul>
+        <li><a href='#' data-page-link="home" >Home</a></li>
+        <li><a href='#' data-page-link="about">About</a></li>
+        <li>
+          Drinks
+          <ul>
+            <li><a href='#' 
+              data-page-link="model" 
+              data-page-attrs='{"brand":"coke"}'>Coca Cola</a></li>
+            <li><a href='#' 
+              data-page-link="model" 
+              data-page-attrs='{"brand":"sprite"}'>Sprite</a></li>
+            <li><a href='#' 
+              data-page-link="model" 
+              data-page-attrs='{"brand":"pepper"}'>Dr. Pepper</a></li>
+            <li><a href='#' 
+              data-page-link="model" 
+              data-page-attrs='{"brand":"costa"}'>Costa Coffee</a></li>
+            <li><a href='#' 
+              data-page-link="model" 
+              data-page-attrs='{"brand":"fanta"}'>Fanta</a></li>
+            <li><a href='#' 
+              data-page-link="model" 
+              data-page-attrs='{"brand":"appletizer"}'>Appletizer</a></li>
+          </ul>
+        </li>
+        <li><a href='statement-of-originality.html' target='_blank'>
+          Statement of Originality
+        </a></li>
+        <li><a href='references.html' target='_blank'>
+          References
+        </a></li>
+      </ul>
+
       <h3>Going Beyond Mark Scheme Requirements</h3>
       <p>
         A few elements have been implemented into this application which are
