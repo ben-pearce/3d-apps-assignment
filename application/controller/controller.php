@@ -344,6 +344,59 @@ class Controller {
 
   /**
    * GET
+   * Endpoint: /dbGetTextures
+   * 
+   * Params:
+   *  - model: The model to get textures for.
+   * 
+   * Gets all textures compatible with a particular
+   * model.
+   * 
+   * Responds with JSON packet.
+   */
+  public function dbGetTextures() {
+    $data = $this->model->getTextures($_GET['model']);
+    $this->load->raw(json_encode($data));
+  }
+
+  /**
+   * POST
+   * Endpoint: /dbCreateTexture
+   * 
+   * Params:
+   *  - model: The model ID texture belongs to.
+   *  - name: The name of the new texture.
+   *  - textureSrcPath: The path of the new texture.
+   * 
+   * Creates a new texture in the datastore.
+   * 
+   * Responds with a message to confirm success.
+   */
+  public function dbCreateTexture() {
+    $this->model->createTexture(
+      $_POST['model'], $_POST['name'], $_POST['textureSrcPath']
+    );
+    $this->load->view('messageView', 'Created texture ' . $_POST['name']);
+  }
+
+  /**
+   * DELETE
+   * Endpoint: /dbDeleteTexture
+   * 
+   * Params:
+   *  - id: The ID of the texture to delete.
+   * 
+   * Deletes a texture from the datastore.
+   * 
+   * Responds with a message to confirm success.
+   */
+  public function dbDeleteTexture() {
+    $this->model->deleteTexture($_GET['id']);
+    $this->load->view('messageView', 'Deleted texture ' . $_GET['id']);
+  }
+
+  /**
+   * GET
    * Endpoint: /dbGetImages
    * 
    * Params:
