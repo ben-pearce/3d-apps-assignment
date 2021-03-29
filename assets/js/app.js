@@ -371,7 +371,9 @@ function modelStopRotate() {
  */
 function modelSetPoints(value) {
   if(value === 0) {
-    $('#render-poly-btn').prop('checked', true);
+    $('#render-fill-btn').prop('checked', true);
+  } else if(value === 1) {
+    $('#render-points-btn').prop('checked', true);
   } else {
     $('#render-wire-btn').prop('checked', true);
   }
