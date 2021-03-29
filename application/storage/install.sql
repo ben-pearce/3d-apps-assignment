@@ -60,3 +60,18 @@ create table strings
 create unique index strings_key_uindex
     on strings (key);
 
+create table texture
+(
+    id               integer      not null
+        constraint texture_pk
+            primary key autoincrement,
+    model            integer      not null
+        references model
+            on update cascade on delete cascade,
+    name             varchar(255) not null,
+    texture_src_path text         not null
+);
+
+create unique index texture_id_uindex
+    on texture (id);
+
