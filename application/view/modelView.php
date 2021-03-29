@@ -5,6 +5,20 @@
       <div class="card text-left">
         <div class="card-header">
           Model
+
+          <ul 
+            id="flavours-tab"
+            class="nav nav-tabs card-header-tabs float-end">
+            <li class="nav-item dropdown">
+              <button
+                class="nav-link dropdown-toggle pt-0 pb-0 rounded-pill text-white" 
+                data-bs-toggle="dropdown" 
+                role="button" 
+                aria-expanded="false">Flavours</button>
+              <!-- Flavours menu will be loaded by AJAX -->
+              <ul class="dropdown-menu"></ul>
+            </li>
+          </ul>
         </div>
         <div class="card-body">
           <div id="coke">
