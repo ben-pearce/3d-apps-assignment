@@ -182,13 +182,21 @@
                 type="radio" 
                 class="btn-check" 
                 name="btnradio"
-                id="render-poly-btn" 
+                id="render-fill-btn" 
                 autocomplete="off" 
                 checked>
-              <label class="btn btn-outline-primary" for="render-poly-btn">
-                Poly
+              <label class="btn btn-outline-primary" for="render-fill-btn">
+                Fill
               </label>
-
+              <input 
+                type="radio" 
+                class="btn-check" 
+                name="btnradio"
+                id="render-points-btn" 
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="render-points-btn">
+                Points
+              </label>
               <input 
                 type="radio" 
                 class="btn-check" 
@@ -207,7 +215,7 @@
                   class="btn btn-primary dropdown-toggle" 
                   data-bs-toggle="dropdown" 
                   aria-expanded="false">
-                  Toggle Light
+                  Lighting
                 </button>
                 <ul class="dropdown-menu">
                   <li><button 
