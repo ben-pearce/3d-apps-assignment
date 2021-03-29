@@ -43,7 +43,8 @@ class Model {
         'main_brand.sql', 
         'main_image.sql', 
         'main_model.sql', 
-        'main_strings.sql'];
+        'main_strings.sql',
+        'main_texture.sql'];
       foreach($scripts as $script) {
         $path = "./application/storage/$script";
         $f = fopen($path, 'r');
