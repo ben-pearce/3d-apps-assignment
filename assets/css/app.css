@@ -302,6 +302,14 @@ body {
   font-weight: bold;
 }
 
+.model-x3d {
+  height: 25rem;
+}
+
+.model-x3d x3d {
+  height: 100%;
+}
+
 /******************
  * Small devices
  ******************/
@@ -315,6 +323,10 @@ body {
   .camera-btns .btn {
     font-size: 0.8rem;
     padding: .275rem .35rem;
+  }
+
+  .model-x3d {
+    height: 30rem;
   }
 }
 
@@ -332,6 +344,10 @@ body {
     font-size: 0.8rem;
     padding: .275rem .35rem;
   }
+
+  .model-x3d {
+    height: 30rem;
+  }
 }
 
 /******************
@@ -347,5 +363,9 @@ body {
   .camera-btns .btn {
     font-size: 1rem;
     padding: .375rem .75rem;
+  }
+
+  .model-x3d {
+    height: 35rem;
   }
 }
